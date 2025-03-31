@@ -6,12 +6,5 @@ public class Exercise3 {
         System.out.print("정수를 입력하세요 : ");
         int num = sc.nextInt();
         System.out.println((num/10+(num%10==0?0:1))*10-num);
-        System.out.println(num);
-        System.out.println(num);
-        System.out.println(num);
-        System.out.println(num);
-        System.out.println(num);
-        System.out.println(num);
-        System.out.println(num);
     }
 }
