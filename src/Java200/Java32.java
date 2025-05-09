@@ -1,8 +1,9 @@
+package Java200;
+
 import java.util.Scanner;
 
-public class java200 {
-    // 32번 문제
-    /*public static void main(String[] args) {
+public class Java32 {
+    public static void main(String[] args) {
         double[] latitude = new double[1];
         double[] longitude = new double[1];
         String[] city = new String[1];
@@ -22,7 +23,5 @@ public class java200 {
 
         double[][] location = {latitude, longitude};
         System.out.println(city[0]+"의 (위도, 경도)는 " +'(' + latitude[0] + ", " + longitude[0]+')');
-    }*/
-    //33번 문제
-
+    }
 }

@@ -1,5 +1,5 @@
-/*//7-1,2번 문제
-public class Exercise7{
+//7-1,2번 문제
+/*public class Exercise7{
     public static void main(String args[]) {
 
         SutdaDeck deck = new SutdaDeck();
@@ -20,17 +20,12 @@ class SutdaDeck {
     SutdaCard[] cards = new SutdaCard[CARD_NUM];
 
     SutdaDeck() {
-        for(int i = 0; i < CARD_NUM; i++){
-            if(i==0){
-                cards[i] = new SutdaCard();
-            } else if (i==2 || i==7) {
-                cards[i] = new SutdaCard(i+1, true);
-            } else if (i<10){
-                cards[i] = new SutdaCard(i+1, false);
-            } else if (i>=10) {
-                cards[i] = new SutdaCard(i-9, false);
-            }
+        for(int i=0;i < cards.length;i++) {
+            int num = i%10+1;
+            boolean isKwang = (i < 10)&&(num==1||num==3||num==8);
+            cards[i] = new SutdaCard(num,isKwang);
         }
+
     }
 
     void shuffle(){
@@ -77,7 +72,7 @@ class SutdaCard {
 }*/
 
 //7-10,11번 문제
-/*public class Exercise7{
+class Exercise7_10{
 
     public static void main(String args[]) {
         MyTv2 t = new MyTv2();
@@ -114,7 +109,6 @@ class MyTv2 {
         }
         return isPowerOn;
     }
-
     public int getChannel() {
         return channel;
     }
@@ -139,13 +133,11 @@ class MyTv2 {
     }
 
     public void gotoPrevChannel() {
-        int tmp = channel;
-        channel = saveCh;
-        saveCh = tmp;
+        setChannel(saveCh);
     }
-}*/
+}
 //7-18번 문제
-/*class Exercise7_18 {
+class Exercise7_18 {
     static void action(Robot r){
         if (r instanceof DanceRobot){
             DanceRobot d = (DanceRobot)r;
@@ -183,8 +175,8 @@ class DrawRobot extends Robot {
     void draw() {
         System.out.println("그림을 그립니다.");
     }
-}*/
-// 7-20번 문제
+}
+// 7-19번 문제
 class Exercise7_19 {
     public static void main(String args[]) {
         Buyer b = new Buyer();
@@ -284,4 +276,159 @@ class Audio extends Product {
     }
 }
 
+//7-22,23번 문제
+abstract class Shape {
+    Point p;
+
+    Shape() {
+        this(new Point(0, 0));
+    }
+
+    Shape(Point p) {
+        this.p = p;
+    }
+
+    abstract double calcArea();
+
+    Point getPosition() {
+        return p;
+    }
+
+    void setPosition(Point p) {
+        this.p = p;
+    }
+}
+
+class Point {
+    int x;
+    int y;
+
+    Point() {
+        this(0, 0);
+    }
+
+    Point(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public String toString() {
+        return "[" + x + "," + y + "]";
+    }
+}
+class Circle extends Shape {
+    double r;
+
+    Circle(double r){
+        this(new Point(0,0), r);
+    }
+
+    Circle(Point p, double r) {
+        super(p);
+        this.r = r;
+    }
+    
+    double calcArea(){
+        return Math.PI * r * r;
+    }
+}
+
+class Rectangle extends Shape {
+    double width;
+    double height;
+
+    boolean isSquare(){
+        if(width != height) return false;
+        return true;
+    }
+    Rectangle(double width, double height) {
+        this(new Point(0,0), width, height);
+    }
+    Rectangle(Point p, double width, double height) {
+        super(p);
+        this.width = width;
+        this.height = height;
+    }
+
+    double calcArea(){
+        return width * height;
+    }
+}
+class Exercise7{
+    static double sumArea(Shape[] arr){
+        double sum = 0;
+        for(int i=0;i<arr.length;i++){
+            sum += arr[i].calcArea();
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        Shape[] arr = {new Circle(5.0), new Rectangle(3,4), new Circle(1)};
+        System.out.println("면적의 합: " + sumArea(arr));
+    }
+}
+//7-25번 문제
+class Outer {
+    class Inner{
+        int iv = 100;
+    }
+}
+class Exercise7_25 {
+    public static void main(String[] args) {
+        Outer ot = new Outer();
+        Outer.Inner in = ot.new Inner();
+        System.out.println(in.iv);
+    }
+}
+
+
+//7-27번 문제
+/*class Outer {
+
+    int value = 10;
+
+    class Inner {
+        int value = 20;
+
+        void method1() {
+            int value = 30;
+
+            System.out.println(value);
+
+            System.out.println(this.value);
+
+            System.out.println(Outer.this.value);
+        } //Inner 클래스의 끝
+    }// Outer클래스의 끝
+}
+
+class Exercise7 {
+    public static void main(String args[]) {
+        Outer ot = new Outer();
+        Outer.Inner in = ot.new Inner();
+        in.method1();
+    }
+}*/
+
+//7-28번 문제
+/*import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+class Exercise7{
+
+    public static void main(String[] args) {
+
+        Frame f = new Frame();
+
+        f.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) {
+                e.getWindow().setVisible(false);
+                e.getWindow().dispose();
+                System.exit(0);
+            }
+        });
+    }
+}*/
 

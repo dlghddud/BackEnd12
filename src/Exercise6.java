@@ -137,11 +137,7 @@ class MyTv {
     final int MIN_CHANNEL = 1;
 
     void turnOnOff() {
-        if (isPowerOn == true) {
-            isPowerOn = false;
-        } else{
-            isPowerOn = true;
-        }
+        isPowerOn =! isPowerOn;
     }
     void volumeUp() {
         if (volume < MAX_VOLUME) {
@@ -211,7 +207,7 @@ class MyTv {
     }*/
 
     //6-24번 문제
-    static int abs(int value){
+    /*static int abs(int value){
         if(value < 0){
             value = value * -1;
         }
@@ -224,5 +220,5 @@ class MyTv {
         System.out.println(value+"의 절대값:"+abs(value));
         value = -10;
         System.out.println(value+"의 절대값:"+abs(value));
-    }
+    }*/
 }
